@@ -33,11 +33,17 @@
     "git": "tsx git-manager.ts"
   },
   "dependencies": {
+    "@jest/globals": "^30.4.1",
+    "@jest/types": "^30.4.1",
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
+    "@types/supertest": "^7.2.0",
     "dotenv": "^17.4.2",
+    "jest": "^30.4.2",
     "pg": "^8.21.0",
     "prettier": "^3.8.3",
+    "supertest": "^7.2.2",
+    "ts-jest": "^29.4.11",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3"
   },
@@ -48,8 +54,9 @@
     "tsx": "^4.22.4"
   },
   "allowScripts": {
+    "esbuild@0.28.0": true,
+    "unrs-resolver@1.12.2": true,
     "@prisma/engines@7.8.0": true,
-    "prisma@7.8.0": true,
-    "esbuild@0.28.0": true
+    "prisma@7.8.0": true
   }
 }
