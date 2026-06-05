@@ -1,0 +1,55 @@
+{
+  "name": "finances_faith_api",
+  "version": "1.0.0",
+  "description": "API graphql for the project",
+  "keywords": [
+    "finance",
+    "faith"
+  ],
+  "homepage": "https://github.com/bcarsoftware/finances_faith_api#readme",
+  "bugs": {
+    "url": "https://github.com/bcarsoftware/finances_faith_api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bcarsoftware/finances_faith_api.git"
+  },
+  "license": "MIT",
+  "author": "abelbarreto-dev",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "format": "prettier --write \\\"{src}/**/*.{ts,tsx,js,jsx,json,css,md}\\\"",
+    "format:check": "prettier --check \\\"{src}/**/*.{ts,tsx,js,jsx,json,css,md}\\\"",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:test": "dotenv -e .env.test -- prisma migrate deploy",
+    "prisma:test:reset": "dotenv -e .env.test -- prisma migrate reset --force",
+    "prisma:format": "prisma format",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:logs": "docker compose logs -f",
+    "db:restart": "docker compose down && docker compose up -d",
+    "git": "tsx git-manager.ts"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "dotenv": "^17.4.2",
+    "pg": "^8.21.0",
+    "prettier": "^3.8.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "dotenv-cli": "^11.0.0",
+    "prisma": "^7.8.0",
+    "tsx": "^4.22.4"
+  },
+  "allowScripts": {
+    "@prisma/engines@7.8.0": true,
+    "prisma@7.8.0": true,
+    "esbuild@0.28.0": true
+  }
+}

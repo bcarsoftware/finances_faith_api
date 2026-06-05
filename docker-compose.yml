@@ -1,0 +1,32 @@
+services:
+  database_prod:
+    image: postgres:18-alpine
+    container_name: finances_faith_db_prod_container
+    restart: always
+    environment:
+      POSTGRES_USER: ${DOCKER_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${DOCKER_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${DOCKER_POSTGRES_DB}
+      PGTZ: ${DOCKER_POSTGRES_TIMEZONE}
+    ports:
+      - "5436:5432"
+    volumes:
+      - pg_data_prod:/var/lib/postgresql/18/docker
+
+  database_test:
+    image: postgres:18-alpine
+    container_name: finances_faith_db_test_container
+    restart: always
+    environment:
+      POSTGRES_USER: ${DOCKER_POSTGRES_USER_TEST}
+      POSTGRES_PASSWORD: ${DOCKER_POSTGRES_PASSWORD_TEST}
+      POSTGRES_DB: ${DOCKER_POSTGRES_DB_TEST}
+      PGTZ: ${DOCKER_POSTGRES_TIMEZONE}
+    ports:
+      - "5437:5432"
+    volumes:
+      - pg_data_test:/var/lib/postgresql/18/docker
+
+volumes:
+  pg_data_prod:
+  pg_data_test:

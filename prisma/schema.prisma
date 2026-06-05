@@ -1,0 +1,239 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/infra/prisma"
+}
+
+enum GenderEnum {
+  MALE
+  FEMALE
+}
+
+enum BankEnum {
+  SAVING
+  CHECKING
+}
+
+enum InvoiceEnum {
+  DEPOSIT
+  WITHDRAW
+  PAYMENT
+}
+
+enum PixEnum {
+  CPF
+  CNPJ
+  EMAIL
+  PHONE
+  RANDOM
+}
+
+enum TransferEnum {
+  PIX
+  TED
+  DOC
+}
+
+model User {
+  id String @id @default(uuid(4))
+
+  name     String     @db.VarChar(256)
+  dateBorn DateTime
+  gender   GenderEnum
+  email    String     @unique @db.VarChar(255)
+  username String     @unique @db.VarChar(128)
+  password String     @db.VarChar(512)
+  salary   Decimal?
+  active   Boolean    @default(false)
+
+  faiths      Faith[]
+  banks       Bank[]
+  cashes      Cash[]
+  payments    Payment[]
+  invoices    Invoice[]
+  invoiceLogs InvoiceLog[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Faith {
+  id String @id @default(uuid(4))
+
+  church String @db.VarChar(128)
+
+  userId String
+  user   User    @relation(fields: [userId], references: [id])
+  tithes Tithe[]
+  offers Offer[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Tithe {
+  id String @id @default(uuid(4))
+
+  investPercent Int @default(10)
+
+  faithId String
+  faith   Faith  @relation(fields: [faithId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Offer {
+  id String @id @default(uuid(4))
+
+  description String  @db.VarChar(512)
+  balance     Decimal
+
+  faithId String
+  faith   Faith  @relation(fields: [faithId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Cash {
+  id String @id @default(uuid(4))
+
+  balance Decimal
+
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
+  cashesHub CashHub[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CashHub {
+  id String @id @default(uuid(4))
+
+  name        String  @db.VarChar(128)
+  description String  @db.VarChar(256)
+  balance     Decimal
+
+  cashId String
+  cash   Cash   @relation(fields: [cashId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Bank {
+  id String @id @default(uuid(4))
+
+  name        String   @db.VarChar(128)
+  description String   @db.VarChar(256)
+  typeAccount BankEnum
+  balance     Decimal
+
+  userId   String
+  user     User      @relation(fields: [userId], references: [id])
+  banksHub BankHub[]
+  pixes    Pix[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BankHub {
+  id String @id @default(uuid(4))
+
+  name        String  @db.VarChar(128)
+  description String  @db.VarChar(256)
+  balance     Decimal
+
+  bankId String
+  bank   Bank   @relation(fields: [bankId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Pix {
+  id String @id @default(uuid(4))
+
+  title   String? @db.VarChar(128)
+  typePix PixEnum
+  keyPix  String  @unique
+
+  bankId String
+  bank   Bank   @relation(fields: [bankId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Payment {
+  id String @id @default(uuid(4))
+
+  name            String   @db.VarChar(128)
+  description     String   @db.VarChar(512)
+  balance         Decimal
+  monthDate       DateTime
+  installments    Int      @default(1)
+  paidInstallment Int      @default(0)
+  totalBalance    Decimal?
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Invoice {
+  id String @id @default(uuid(4))
+
+  title       String       @db.VarChar(128)
+  description String       @db.VarChar(512)
+  typeInvoice InvoiceEnum
+  balance     Decimal
+  transfer    TransferEnum
+  cancel      Boolean      @default(false)
+  bank        Boolean      @default(false)
+  bankHub     Boolean      @default(false)
+  cash        Boolean      @default(false)
+  cashHub     Boolean      @default(false)
+  tithe       Boolean      @default(false)
+  offer       Boolean      @default(false)
+  payment     Boolean      @default(false)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model InvoiceLog {
+  id String @id @default(uuid(4))
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  invoiceId String @db.VarChar(128)
+
+  titheId   String? @db.VarChar(128)
+  offerId   String? @db.VarChar(128)
+  cashId    String? @db.VarChar(128)
+  cashHubId String? @db.VarChar(128)
+  bankId    String? @db.VarChar(128)
+  bankHubId String? @db.VarChar(128)
+  paymentId String? @db.VarChar(128)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+datasource db {
+  provider = "postgresql"
+}
