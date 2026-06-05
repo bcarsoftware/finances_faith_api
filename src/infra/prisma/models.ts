@@ -7,16 +7,16 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from "./models/User.js";
-export type * from "./models/Faith.js";
-export type * from "./models/Tithe.js";
-export type * from "./models/Offer.js";
-export type * from "./models/Cash.js";
-export type * from "./models/CashHub.js";
-export type * from "./models/Bank.js";
-export type * from "./models/BankHub.js";
-export type * from "./models/Pix.js";
-export type * from "./models/Payment.js";
-export type * from "./models/Invoice.js";
-export type * from "./models/InvoiceLog.js";
-export type * from "./commonInputTypes.js";
+export type * from "./models/User.ts";
+export type * from "./models/Faith.ts";
+export type * from "./models/Tithe.ts";
+export type * from "./models/Offer.ts";
+export type * from "./models/Cash.ts";
+export type * from "./models/CashHub.ts";
+export type * from "./models/Bank.ts";
+export type * from "./models/BankHub.ts";
+export type * from "./models/Pix.ts";
+export type * from "./models/Payment.ts";
+export type * from "./models/Invoice.ts";
+export type * from "./models/InvoiceLog.ts";
+export type * from "./commonInputTypes.ts";

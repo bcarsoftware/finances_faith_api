@@ -16,7 +16,7 @@
   },
   "license": "MIT",
   "author": "abelbarreto-dev",
-  "type": "module",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "test": "jest",
