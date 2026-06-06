@@ -1,7 +1,7 @@
 import { GraphQLError } from "graphql";
 import { CoreException } from "../../exceptions/core/core.exception.ts";
 
-export class GraphQLException extends GraphQLError {
+export class GraphqlException extends GraphQLError {
     static async create(
         message: string,
         exception: CoreException,
