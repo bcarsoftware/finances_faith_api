@@ -1,4 +1,4 @@
-import {CoreException} from "./core/core.exception.ts";
+import { CoreException } from "./core/core.exception.ts";
 
 type StatusCode = 400 | 401 | 403 | 498 | 500;
 

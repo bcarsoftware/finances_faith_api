@@ -8,6 +8,7 @@ export type ExceptionType = {
 
 export abstract class CoreException extends Error {
     private _code: number;
+    private _path: string[] = [];
 
     protected constructor(props: ExceptionType) {
         super(props.message || "Exception Context: Message");
@@ -23,5 +24,13 @@ export abstract class CoreException extends Error {
 
     set code(code: number) {
         this._code = code;
+    }
+
+    get path(): string[] {
+        return this._path;
+    }
+
+    set path(path: string) {
+        this._path.push(path);
     }
 }
