@@ -1,4 +1,4 @@
-export class Regex {
+export class RegexUtil {
     public static readonly name = (name: string, max: number, min?: number) =>
         RegExp(
             `^(?=.{${min ?? ""},${max}}$)[a-zA-ZÀ-ÿ]+(?:[ .\\-][a-zA-ZÀ-ÿ]+)*$`,
@@ -29,4 +29,7 @@ export class Regex {
         RegExp(
             /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/,
         ).test(uuid);
+
+    public static readonly numeric = (number: string) =>
+        RegExp(/^\d+$/).test(number);
 }

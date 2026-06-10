@@ -44,6 +44,7 @@ export type UserMinAggregateOutputType = {
     password: string | null;
     salary: runtime.Decimal | null;
     active: boolean | null;
+    deleted: boolean | null;
     createdAt: Date | null;
     updatedAt: Date | null;
 };
@@ -58,6 +59,7 @@ export type UserMaxAggregateOutputType = {
     password: string | null;
     salary: runtime.Decimal | null;
     active: boolean | null;
+    deleted: boolean | null;
     createdAt: Date | null;
     updatedAt: Date | null;
 };
@@ -72,6 +74,7 @@ export type UserCountAggregateOutputType = {
     password: number;
     salary: number;
     active: number;
+    deleted: number;
     createdAt: number;
     updatedAt: number;
     _all: number;
@@ -95,6 +98,7 @@ export type UserMinAggregateInputType = {
     password?: true;
     salary?: true;
     active?: true;
+    deleted?: true;
     createdAt?: true;
     updatedAt?: true;
 };
@@ -109,6 +113,7 @@ export type UserMaxAggregateInputType = {
     password?: true;
     salary?: true;
     active?: true;
+    deleted?: true;
     createdAt?: true;
     updatedAt?: true;
 };
@@ -123,6 +128,7 @@ export type UserCountAggregateInputType = {
     password?: true;
     salary?: true;
     active?: true;
+    deleted?: true;
     createdAt?: true;
     updatedAt?: true;
     _all?: true;
@@ -231,6 +237,7 @@ export type UserGroupByOutputType = {
     password: string;
     salary: runtime.Decimal | null;
     active: boolean;
+    deleted: boolean | null;
     createdAt: Date;
     updatedAt: Date;
     _count: UserCountAggregateOutputType | null;
@@ -272,6 +279,7 @@ export type UserWhereInput = {
         | string
         | null;
     active?: Prisma.BoolFilter<"User"> | boolean;
+    deleted?: Prisma.BoolNullableFilter<"User"> | boolean | null;
     createdAt?: Prisma.DateTimeFilter<"User"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string;
     faiths?: Prisma.FaithListRelationFilter;
@@ -292,6 +300,7 @@ export type UserOrderByWithRelationInput = {
     password?: Prisma.SortOrder;
     salary?: Prisma.SortOrderInput | Prisma.SortOrder;
     active?: Prisma.SortOrder;
+    deleted?: Prisma.SortOrderInput | Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
     faiths?: Prisma.FaithOrderByRelationAggregateInput;
@@ -322,6 +331,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<
             | string
             | null;
         active?: Prisma.BoolFilter<"User"> | boolean;
+        deleted?: Prisma.BoolNullableFilter<"User"> | boolean | null;
         createdAt?: Prisma.DateTimeFilter<"User"> | Date | string;
         updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string;
         faiths?: Prisma.FaithListRelationFilter;
@@ -344,6 +354,7 @@ export type UserOrderByWithAggregationInput = {
     password?: Prisma.SortOrder;
     salary?: Prisma.SortOrderInput | Prisma.SortOrder;
     active?: Prisma.SortOrder;
+    deleted?: Prisma.SortOrderInput | Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
     _count?: Prisma.UserCountOrderByAggregateInput;
@@ -378,6 +389,7 @@ export type UserScalarWhereWithAggregatesInput = {
         | string
         | null;
     active?: Prisma.BoolWithAggregatesFilter<"User"> | boolean;
+    deleted?: Prisma.BoolNullableWithAggregatesFilter<"User"> | boolean | null;
     createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string;
     updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string;
 };
@@ -392,6 +404,7 @@ export type UserCreateInput = {
     password: string;
     salary?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     active?: boolean;
+    deleted?: boolean | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     faiths?: Prisma.FaithCreateNestedManyWithoutUserInput;
@@ -412,6 +425,7 @@ export type UserUncheckedCreateInput = {
     password: string;
     salary?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     active?: boolean;
+    deleted?: boolean | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     faiths?: Prisma.FaithUncheckedCreateNestedManyWithoutUserInput;
@@ -440,6 +454,7 @@ export type UserUpdateInput = {
         | string
         | null;
     active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     faiths?: Prisma.FaithUpdateManyWithoutUserNestedInput;
@@ -468,6 +483,7 @@ export type UserUncheckedUpdateInput = {
         | string
         | null;
     active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     faiths?: Prisma.FaithUncheckedUpdateManyWithoutUserNestedInput;
@@ -488,6 +504,7 @@ export type UserCreateManyInput = {
     password: string;
     salary?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     active?: boolean;
+    deleted?: boolean | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 };
@@ -510,6 +527,7 @@ export type UserUpdateManyMutationInput = {
         | string
         | null;
     active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -532,6 +550,7 @@ export type UserUncheckedUpdateManyInput = {
         | string
         | null;
     active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -546,6 +565,7 @@ export type UserCountOrderByAggregateInput = {
     password?: Prisma.SortOrder;
     salary?: Prisma.SortOrder;
     active?: Prisma.SortOrder;
+    deleted?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
 };
@@ -564,6 +584,7 @@ export type UserMaxOrderByAggregateInput = {
     password?: Prisma.SortOrder;
     salary?: Prisma.SortOrder;
     active?: Prisma.SortOrder;
+    deleted?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
 };
@@ -578,6 +599,7 @@ export type UserMinOrderByAggregateInput = {
     password?: Prisma.SortOrder;
     salary?: Prisma.SortOrder;
     active?: Prisma.SortOrder;
+    deleted?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
 };
@@ -613,6 +635,10 @@ export type NullableDecimalFieldUpdateOperationsInput = {
 
 export type BoolFieldUpdateOperationsInput = {
     set?: boolean;
+};
+
+export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null;
 };
 
 export type UserCreateNestedOneWithoutFaithsInput = {
@@ -781,6 +807,7 @@ export type UserCreateWithoutFaithsInput = {
     password: string;
     salary?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     active?: boolean;
+    deleted?: boolean | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     banks?: Prisma.BankCreateNestedManyWithoutUserInput;
@@ -800,6 +827,7 @@ export type UserUncheckedCreateWithoutFaithsInput = {
     password: string;
     salary?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     active?: boolean;
+    deleted?: boolean | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     banks?: Prisma.BankUncheckedCreateNestedManyWithoutUserInput;
@@ -855,6 +883,7 @@ export type UserUpdateWithoutFaithsInput = {
         | string
         | null;
     active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     banks?: Prisma.BankUpdateManyWithoutUserNestedInput;
@@ -882,6 +911,7 @@ export type UserUncheckedUpdateWithoutFaithsInput = {
         | string
         | null;
     active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     banks?: Prisma.BankUncheckedUpdateManyWithoutUserNestedInput;
@@ -901,6 +931,7 @@ export type UserCreateWithoutCashesInput = {
     password: string;
     salary?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     active?: boolean;
+    deleted?: boolean | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     faiths?: Prisma.FaithCreateNestedManyWithoutUserInput;
@@ -920,6 +951,7 @@ export type UserUncheckedCreateWithoutCashesInput = {
     password: string;
     salary?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     active?: boolean;
+    deleted?: boolean | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     faiths?: Prisma.FaithUncheckedCreateNestedManyWithoutUserInput;
@@ -975,6 +1007,7 @@ export type UserUpdateWithoutCashesInput = {
         | string
         | null;
     active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     faiths?: Prisma.FaithUpdateManyWithoutUserNestedInput;
@@ -1002,6 +1035,7 @@ export type UserUncheckedUpdateWithoutCashesInput = {
         | string
         | null;
     active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     faiths?: Prisma.FaithUncheckedUpdateManyWithoutUserNestedInput;
@@ -1021,6 +1055,7 @@ export type UserCreateWithoutBanksInput = {
     password: string;
     salary?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     active?: boolean;
+    deleted?: boolean | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     faiths?: Prisma.FaithCreateNestedManyWithoutUserInput;
@@ -1040,6 +1075,7 @@ export type UserUncheckedCreateWithoutBanksInput = {
     password: string;
     salary?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     active?: boolean;
+    deleted?: boolean | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     faiths?: Prisma.FaithUncheckedCreateNestedManyWithoutUserInput;
@@ -1095,6 +1131,7 @@ export type UserUpdateWithoutBanksInput = {
         | string
         | null;
     active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     faiths?: Prisma.FaithUpdateManyWithoutUserNestedInput;
@@ -1122,6 +1159,7 @@ export type UserUncheckedUpdateWithoutBanksInput = {
         | string
         | null;
     active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     faiths?: Prisma.FaithUncheckedUpdateManyWithoutUserNestedInput;
@@ -1141,6 +1179,7 @@ export type UserCreateWithoutPaymentsInput = {
     password: string;
     salary?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     active?: boolean;
+    deleted?: boolean | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     faiths?: Prisma.FaithCreateNestedManyWithoutUserInput;
@@ -1160,6 +1199,7 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
     password: string;
     salary?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     active?: boolean;
+    deleted?: boolean | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     faiths?: Prisma.FaithUncheckedCreateNestedManyWithoutUserInput;
@@ -1215,6 +1255,7 @@ export type UserUpdateWithoutPaymentsInput = {
         | string
         | null;
     active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     faiths?: Prisma.FaithUpdateManyWithoutUserNestedInput;
@@ -1242,6 +1283,7 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
         | string
         | null;
     active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     faiths?: Prisma.FaithUncheckedUpdateManyWithoutUserNestedInput;
@@ -1261,6 +1303,7 @@ export type UserCreateWithoutInvoicesInput = {
     password: string;
     salary?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     active?: boolean;
+    deleted?: boolean | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     faiths?: Prisma.FaithCreateNestedManyWithoutUserInput;
@@ -1280,6 +1323,7 @@ export type UserUncheckedCreateWithoutInvoicesInput = {
     password: string;
     salary?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     active?: boolean;
+    deleted?: boolean | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     faiths?: Prisma.FaithUncheckedCreateNestedManyWithoutUserInput;
@@ -1335,6 +1379,7 @@ export type UserUpdateWithoutInvoicesInput = {
         | string
         | null;
     active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     faiths?: Prisma.FaithUpdateManyWithoutUserNestedInput;
@@ -1362,6 +1407,7 @@ export type UserUncheckedUpdateWithoutInvoicesInput = {
         | string
         | null;
     active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     faiths?: Prisma.FaithUncheckedUpdateManyWithoutUserNestedInput;
@@ -1381,6 +1427,7 @@ export type UserCreateWithoutInvoiceLogsInput = {
     password: string;
     salary?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     active?: boolean;
+    deleted?: boolean | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     faiths?: Prisma.FaithCreateNestedManyWithoutUserInput;
@@ -1400,6 +1447,7 @@ export type UserUncheckedCreateWithoutInvoiceLogsInput = {
     password: string;
     salary?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     active?: boolean;
+    deleted?: boolean | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     faiths?: Prisma.FaithUncheckedCreateNestedManyWithoutUserInput;
@@ -1455,6 +1503,7 @@ export type UserUpdateWithoutInvoiceLogsInput = {
         | string
         | null;
     active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     faiths?: Prisma.FaithUpdateManyWithoutUserNestedInput;
@@ -1482,6 +1531,7 @@ export type UserUncheckedUpdateWithoutInvoiceLogsInput = {
         | string
         | null;
     active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     faiths?: Prisma.FaithUncheckedUpdateManyWithoutUserNestedInput;
@@ -1603,6 +1653,7 @@ export type UserSelect<
         password?: boolean;
         salary?: boolean;
         active?: boolean;
+        deleted?: boolean;
         createdAt?: boolean;
         updatedAt?: boolean;
         faiths?: boolean | Prisma.User$faithsArgs<ExtArgs>;
@@ -1630,6 +1681,7 @@ export type UserSelectCreateManyAndReturn<
         password?: boolean;
         salary?: boolean;
         active?: boolean;
+        deleted?: boolean;
         createdAt?: boolean;
         updatedAt?: boolean;
     },
@@ -1650,6 +1702,7 @@ export type UserSelectUpdateManyAndReturn<
         password?: boolean;
         salary?: boolean;
         active?: boolean;
+        deleted?: boolean;
         createdAt?: boolean;
         updatedAt?: boolean;
     },
@@ -1666,6 +1719,7 @@ export type UserSelectScalar = {
     password?: boolean;
     salary?: boolean;
     active?: boolean;
+    deleted?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
 };
@@ -1683,6 +1737,7 @@ export type UserOmit<
     | "password"
     | "salary"
     | "active"
+    | "deleted"
     | "createdAt"
     | "updatedAt",
     ExtArgs["result"]["user"]
@@ -1732,6 +1787,7 @@ export type $UserPayload<
             password: string;
             salary: runtime.Decimal | null;
             active: boolean;
+            deleted: boolean | null;
             createdAt: Date;
             updatedAt: Date;
         },
@@ -2404,6 +2460,7 @@ export interface UserFieldRefs {
     readonly password: Prisma.FieldRef<"User", "String">;
     readonly salary: Prisma.FieldRef<"User", "Decimal">;
     readonly active: Prisma.FieldRef<"User", "Boolean">;
+    readonly deleted: Prisma.FieldRef<"User", "Boolean">;
     readonly createdAt: Prisma.FieldRef<"User", "DateTime">;
     readonly updatedAt: Prisma.FieldRef<"User", "DateTime">;
 }

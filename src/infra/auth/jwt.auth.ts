@@ -1,6 +1,6 @@
 import * as jwt from "jsonwebtoken";
 import { AuthException } from "../../exceptions/auth.exception.ts";
-import { Regex } from "../../utils/regex/regex.ts";
+import { RegexUtil } from "../../utils/regex/regex.util.ts";
 
 type TimeTypes = "1m" | "1d" | "2m" | "2d" | "7m" | "7d";
 
@@ -35,7 +35,7 @@ const getJWTSecret = async (): Promise<string> => {
  * * userId: uuid format as 77eaf026-d6f0-4350-98a5-a95a101e94ef;
  */
 export const generateToken = async (payload: TokenPayload): Promise<string> => {
-    if (!Regex.uuid(payload.userId)) throw new AuthException(400);
+    if (!RegexUtil.uuid(payload.userId)) throw new AuthException(400);
 
     const secret = await getJWTSecret();
 

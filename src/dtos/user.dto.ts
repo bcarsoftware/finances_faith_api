@@ -11,3 +11,8 @@ export interface UserDTO {
     salary?: string | null;
     active: boolean;
 }
+
+export interface UserAccessDTO {
+    username: string;
+    password: string;
+}

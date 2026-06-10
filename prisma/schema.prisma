@@ -57,7 +57,7 @@ model User {
   invoices    Invoice[]
   invoiceLogs InvoiceLog[]
 
-  deleated Boolean? @default(false)
+  deleted Boolean? @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
