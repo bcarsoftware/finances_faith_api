@@ -10,6 +10,7 @@ export interface UserModel {
     password: string;
     salary?: string | null;
     active: boolean;
+    deleted?: boolean;
     createdAt: Date;
     updatedAt: Date;
 }
